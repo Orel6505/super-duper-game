@@ -6,12 +6,16 @@ import java.util.Scanner;
 public class PartTwo {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        String outputFile = "report.txt";
 
         String studentsFile = scanner.nextLine();
         String gradesFile = scanner.nextLine();
-
-        String outputFile = "report.txt";
-
+        
+        if (studentsFile.isEmpty() || gradesFile.isEmpty()) {
+            System.out.println("File names cannot be empty.");
+            scanner.close();
+            return;
+        }
         try (BufferedReader brStudents = new BufferedReader(new FileReader(studentsFile));
                 BufferedReader brGrades = new BufferedReader(new FileReader(gradesFile));
                 PrintWriter pw = new PrintWriter(new FileWriter(outputFile))) {
@@ -48,13 +52,8 @@ public class PartTwo {
 
             }
         }
-
-        catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (NumberFormatException e) {
-            System.out.println("Error parsing data (check file format): " + e.getMessage());
+        catch (Exception e) {
+            System.out.println("Error parsing data: " + e.getMessage());
         }
-
     }
 }
