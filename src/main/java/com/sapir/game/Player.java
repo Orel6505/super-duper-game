@@ -1,7 +1,5 @@
 package com.sapir.game;
 
-import java.util.Arrays;
-
 public class Player extends Character {
     private Item [] inventory;
 
@@ -43,19 +41,19 @@ public class Player extends Character {
    @Override
    public String toString() {
     boolean first = true;
-    String inventory = "";
+    String inv = "";
     for (Item item : this.inventory) {
         if (item != null) {
             if (!first) {
-                inventory += " | ";
+                inv += " | ";
             }
-            inventory += item.getName();
+            inv += item.getName();
             first = false;
         }
     }
     return "Name: " + getName() + "\nHealth: "
             + getHealth() + "\nLevel: " + getLevel() +
-            "\nInventory: " + inventory;
+            "\nInventory: " + inv;
    }
     
     
