@@ -13,10 +13,15 @@ public class GameWorld {
         this.enemies = new Enemy[5];
     }
     public GameWorld(String name, int difficulty) {
+        super();
         this.name = name;
         this.difficulty = difficulty;
-        this.players = new Player[5];
-        this.enemies = new Enemy[5];
+    }
+    public GameWorld(String name, int difficulty, Player[] players, Enemy[] enemies) {
+        this.name = name;
+        this.difficulty = difficulty;
+        this.players = players;
+        this.enemies = enemies;
     }
     public void addPlayer(Player player) {
         for (int i = 0; i < players.length; i++) {
@@ -61,5 +66,9 @@ public class GameWorld {
             if (p != null) count++;
         }
         return "World Name: " + name + "\nDifficulty: " + difficulty + "\nNumber of players: " + count;
+    }
+    
+    public Player[] getPlayers() {
+        return players;
     }
 }
